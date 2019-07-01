@@ -1,7 +1,7 @@
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  author: Aye Nyein Aung
+  description: Role for basic security routeros_hardening
+  company: ana_automates
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
