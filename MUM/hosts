@@ -1,0 +1,19 @@
+[routeros:children]
+routers
+
+[routeros:vars]
+ansible_connection=network_cli
+ansible_network_os=routeros
+ansible_user=ansible
+ansible_password=123456
+ansible_become=yes
+ansible_command_timeout=600
+
+
+[routers]
+DMZ  router_user=DMZ_Admin router_user_password=DMZ12345
+InternetCustomer  router_user=Customer_Admin router_user_password=Customer12345
+Office  router_user=Office_Admin router_user_password=Office12345
+VPNCustomer router_user=VPN_Admin router_user_password=vpn12345
+CloudCustomer router_user=Cloud_Admin router_user_password=cloud12345
+#TEST ansible_user=admin ansible_password=

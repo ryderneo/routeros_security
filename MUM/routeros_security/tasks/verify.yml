@@ -1,0 +1,10 @@
+---
+- name: verify results
+  routeros_command:
+          commands:
+             - /interface print
+             - /ip neighbor print
+             - /ip service print
+  register: verify
+- debug: var=verify.stdout_lines
+

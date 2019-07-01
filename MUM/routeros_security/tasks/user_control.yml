@@ -1,0 +1,19 @@
+---
+- name: add a specific user
+  routeros_command:
+      commands:
+        - /user add name={{ router_user }}  password={{ router_user_password }}  group=full
+        - /user set {{ router_user }} address=1.1.1.0/24
+- name: remove default admin
+  routeros_command:
+     commands:
+        - /user remove admin
+- name: verify new users
+  routeros_command:
+        commands:
+          - /user print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify
+

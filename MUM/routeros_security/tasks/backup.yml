@@ -1,0 +1,43 @@
+---
+- name: gather_facts
+  routeros_facts:
+      gather_subset:
+           - hardware
+           - config
+  tags: facts
+- name: backup
+  routeros_command:
+        commands:
+          - /export file={{ ansible_net_hostname }}.cfg verbose
+- name: check for updates
+  routeros_command:
+      commands:
+          - /system package update set channel=stable
+          - /system package update check-for-updates
+  register: check_updates
+- name: download latest package
+  routeros_command:
+        commands: system package update download
+  register: download
+- debug: var=download.stdout_lines
+- name: reboot_router
+  routeros_command:
+        commands: /system scheduler add name=REBOOT interval=5s on-event="/system scheduler remove REBOOT;/system reboot"
+- name: wait for router to reboot
+  wait_for:
+      port: 22
+      delay: 30
+      host: "{{ inventory_hostname }}"
+  connection: local
+- name: verify router is backuped & updated
+  routeros_command:
+       commands:
+           - /file print
+           - /system resource print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify
+#     when: '" New version is available " in check_updates.stdout'
+
+

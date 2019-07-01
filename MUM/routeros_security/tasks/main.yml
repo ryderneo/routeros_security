@@ -1,0 +1,15 @@
+---
+# tasks file for routeros_security
+- name: disable unused interfaces
+  include_tasks: interface.yml
+  when: interface == 1
+- name: disable neighbor discovery
+  include_tasks: neighbor_discovery.yml
+  when: neighbor_discovery == 1
+- name: disable unused services
+  include_tasks: disable_services.yml
+  when: service_control == 1
+- name: verify results
+  include_tasks: verify.yml
+  when: verify_results == 1
+

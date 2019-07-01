@@ -1,0 +1,12 @@
+---
+- hosts: routers
+  gather_facts: no
+  tasks:
+    - name: create a user for ansible management
+      routeros_command:
+                commands:
+                    - /user add name=ansible password=123456 group=full
+      register: create_remote_user
+      tags: create_remote_user
+    - debug: var=create_remote_user.stdout_lines
+      tags: create_remote_user 

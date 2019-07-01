@@ -1,0 +1,14 @@
+---
+- name: disable unused interfaces
+  routeros_command:
+         commands:
+            - /interface set ether3,ether4,ether5 disabled=yes
+- name: verify the results
+  routeros_command:
+        commands:
+            - /interface print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify
+

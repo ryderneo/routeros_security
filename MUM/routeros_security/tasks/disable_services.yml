@@ -1,0 +1,20 @@
+---
+- name: Keep only secure services
+  routeros_command:
+       commands:
+         - /ip service disable telnet,ftp,www,api,api-ssl
+- name: Change frequently used default ports
+  routeros_command:
+       commands:
+         - /ip service set winbox port=1234
+         - /ip service set winbox address=192.168.153.0/24
+- name: verify the changes
+  routeros_command:
+         commands:
+           - /ip service print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify
+
+

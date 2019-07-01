@@ -1,0 +1,13 @@
+---
+- name: disable MNDP
+  routeros_command:
+       commands:
+         -  /ip neighbor discovery-settings set discover-interface-list=none 
+- name: verify the results
+  routeros_command: 
+       commands: 
+         - /ip neighbor discovery-settings print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify

@@ -1,0 +1,6 @@
+---
+# defaults file for routeros_security
+interface: 0
+neighbor_discovery: 0
+service_control: 0
+verify_results: 0
