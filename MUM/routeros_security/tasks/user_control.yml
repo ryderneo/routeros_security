@@ -3,7 +3,7 @@
   routeros_command:
       commands:
         - /user add name={{ router_user }}  password={{ router_user_password }}  group=full
-        - /user set {{ router_user }} address=1.1.1.0/24
+        - /user set {{ router_user }} address={{ router_user_network }}
 - name: remove default admin
   routeros_command:
      commands:
@@ -16,4 +16,3 @@
   tags: verify
 - debug: var=verify.stdout_lines
   tags: verify
-

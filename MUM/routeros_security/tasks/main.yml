@@ -1,5 +1,8 @@
 ---
 # tasks file for routeros_security
+- name: backup and update
+  include_tasks: backup.yml
+  when backup == 1
 - name: disable unused interfaces
   include_tasks: interface.yml
   when: interface == 1
