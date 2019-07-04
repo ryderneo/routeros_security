@@ -2,7 +2,7 @@
 - name: disable unused interfaces
   routeros_command:
          commands:
-            - /interface set ether3,ether4,ether5 disabled=yes
+            - /interface set "{{ unused_interfaces }}" disabled=yes
 - name: verify the results
   routeros_command:
         commands:
