@@ -2,7 +2,7 @@
 - name: Keep only secure services
   routeros_command:
        commands:
-         - /ip service disable telnet,ftp,www,api,api-ssl
+         - /ip service disable {{ services_to_disable }}
 - name: Change frequently used default ports
   routeros_command:
        commands:

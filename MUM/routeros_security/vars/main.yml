@@ -7,6 +7,7 @@ unused_interfaces:
           - ether4
 neighbor_discovery: 1
 service_control: 1
+services_to_disable: telnet,ftp,www,api,api-ssl
 winbox_access_port: 1234
 winbox_access_network: "10.103.0.0./24"
 user_control: 1
