@@ -6,7 +6,7 @@
 - name: Change frequently used default ports
   routeros_command:
        commands:
-         - /ip service set winbox port=1234
+         - /ip service set winbox port={{ winbox_access_port }}
          - /ip service set winbox address={{ winbox_access_network }}
 - name: verify the changes
   routeros_command:
