@@ -1,0 +1,17 @@
+---
+- name: disable all MAC accesses to routers
+  routeros_command:
+        commands:
+           - /tool mac-server set allowed-interface-list=none
+           - /tool mac-server mac-winbox set allowed-interface-list=none
+           - /tool mac-server ping set enabled=no
+- name: verify the results
+  routeros_command:
+         commands:
+            - /tool mac-server print
+            - /tool mac-server mac-winbox print
+            - /tool mac-server ping print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify

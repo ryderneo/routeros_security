@@ -3,8 +3,13 @@
   routeros_command:
           commands:
              - /interface print
-             - /ip neighbor print
+             - /ip neighbor discovery-settings print
              - /ip service print
              - /user print
+             - /tool bandwidth-server print
+             - /ip dns print
+             - /tool mac-server print
+             - /tool mac-server mac-winbox print
+             - /tool mac-server ping print
   register: verify
 - debug: var=verify.stdout_lines

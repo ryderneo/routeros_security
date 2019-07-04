@@ -1,6 +1,12 @@
 ---
 # defaults file for routeros_security
+backup: 0
 interface: 0
 neighbor_discovery: 0
 service_control: 0
 verify_results: 0
+disable_BTserver: 0
+disable_dns_cache: 0
+disable_macaccess: 0
+disable_otherclients: 0
+verify: 0

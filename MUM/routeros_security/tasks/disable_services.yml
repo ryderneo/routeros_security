@@ -7,7 +7,7 @@
   routeros_command:
        commands:
          - /ip service set winbox port=1234
-         - /ip service set winbox address=192.168.153.0/24
+         - /ip service set winbox address={{ winbox_access_network }}
 - name: verify the changes
   routeros_command:
          commands:
@@ -16,5 +16,3 @@
   tags: verify
 - debug: var=verify.stdout_lines
   tags: verify
-
-

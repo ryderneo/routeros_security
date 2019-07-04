@@ -2,13 +2,18 @@
 # vars file for routeros_security
 backup: 1
 interface: 1
-neighbor_discovery: 1
-service_control: 1
-verify_results: 1
 unused_interfaces:
           - ether3
           - ether4
+neighbor_discovery: 1
+service_control: 1
+winbox_access_network: "10.103.0.0./24"
 user_control: 1
 router_user: agbadmin
 router_user_password: "P@ssw0rd123"
 router_user_network: "10.103.0.0/24"
+disable_BTserver: 1
+disable_dns_cache: 1
+disable_macaccess: 1
+disable_otherclients: 1
+verify_results: 1

@@ -1,0 +1,8 @@
+---
+- name: disable other client services
+  routeros_command:
+        commands:
+           - /ip proxy set enabled=no
+           - /ip socks set enabled=no
+           - /ip upnp set enabled=no
+           - /ip cloud set ddns-enabled=no update-time=no

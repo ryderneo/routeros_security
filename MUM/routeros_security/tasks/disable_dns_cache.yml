@@ -1,0 +1,13 @@
+---
+- name: disable DNS cache
+  routeros_command:
+        commands:
+           - /ip dns set allow-remote-requests=no
+- name: verify the results
+  routeros_command:
+         commands:
+            - /ip dns print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify

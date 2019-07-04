@@ -15,6 +15,18 @@
 - name: user control
   include_tasks: user_control.yml
   when: user_control == 1
+- name: disable BTserver
+  include_tasks: disable_BTserver.yml
+  when: disable_BTserver == 1
+- name: disable dns caching
+  include_tasks: disable_dns_cache.yml
+  when: disable_dns_cache == 1
+- name: disable mac access
+  include_tasks: disable_macaccess.yml
+  when: disable_macaccess == 1
+- name: disable other clients access
+  include_tasks: disable_otherclients.yml
+  when: disable_otherclients == 1
 - name: verify results
   include_tasks: verify.yml
   when: verify_results == 1

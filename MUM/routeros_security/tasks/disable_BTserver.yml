@@ -1,0 +1,13 @@
+---
+- name: disable Bandwidth Test
+  routeros_command:
+        commands:
+           - /tool bandwidth-server set enabled=no
+- name: verify the results
+  routeros_command:
+         commands:
+            - /tool bandwidth-server print
+  register: verify
+  tags: verify
+- debug: var=verify.stdout_lines
+  tags: verify
